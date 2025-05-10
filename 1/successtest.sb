@@ -1,0 +1,12 @@
+weka nambari_moja = 10;
+weka nambari_mbili = 5;
+weka matokeo = nambari_moja + nambari_mbili;
+onyesha "Jibu ni: " + matokeo;
+
+ikiwa matokeo > 12 basi
+    onyesha "Matokeo ni makubwa!";
+inginepo
+    onyesha "Matokeo si makubwa sana.";
+kurudia i = 1 hadi matokeo
+    onyesha "Mwisho: " + i;
+    @
