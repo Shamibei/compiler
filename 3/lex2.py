@@ -14,7 +14,8 @@ reserved = {
     'onyesha': 'PRINT',
     'ikiwa': 'IF',
     'basi': 'THEN',
-    'nginepo': 'ELSE'
+    'nginepo': 'ELSE',
+    'function': 'FUNCTION'
 }
 
 tokens += list(reserved.values())

@@ -1,11 +1,14 @@
 from lex2 import lexer
 from yacc2 import parser
 from tree import ASTNode, print_ast, ast_to_graphviz
+from semantic import analyze_semantics
+from semantic import SemanticError
+from ir_gen import generate_ir, ir_code
 
 
 def main():
     try:
-        with open("test.sw", "r", encoding="utf-8") as file:
+        with open("test2.sw", "r", encoding="utf-8") as file:
             data = file.read()
     except FileNotFoundError:
         print("Error: 'testsw' file not found.")
@@ -35,6 +38,23 @@ def main():
     graph = ast_to_graphviz(ast)
     graph.render("ast_output", view=True)  # Opens PNG and saves as ast_output.png
 
+    print("\nPerforming Semantic Analysis...")
+    analyze_semantics(ast)  # Perform semantic analysis
+    print("Semantic analysis completed.")
+    print("AST and semantic analysis completed successfully.")
+
+    try:
+        analyze_semantics(ast)
+    except SemanticError as e:
+        print(e)
+        return
+
+    generate_ir(ast)
+    print("\nGenerating IR code...")
+    print("IR code:")
+    for line in ir_code:
+        print(line)
+    print("\nIR code generation completed successfully.")
 
 
 if __name__ == "__main__":

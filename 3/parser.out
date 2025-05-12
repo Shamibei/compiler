@@ -1,0 +1,58 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statements statement
+Rule 3     statements -> statement
+Rule 4     statement -> LET IDENTIFIER EQUALS expression
+Rule 5     statement -> PRINT STRING_LITERAL
+Rule 6     statement -> FUNCTION IDENTIFIER LPAREN RPAREN THEN statement_list
+Rule 7     statement -> IF expression THEN statements ELSE statements
+Rule 8     expression -> expression PLUS expression
+Rule 9     expression -> expression MINUS expression
+Rule 10    expression -> expression TIMES expression
+Rule 11    expression -> expression DIVIDE expression
+Rule 12    expression -> expression GT expression
+Rule 13    expression -> expression LT expression
+Rule 14    expression -> expression GE expression
+Rule 15    expression -> expression LE expression
+Rule 16    expression -> expression NEQ expression
+Rule 17    expression -> LPAREN expression RPAREN
+Rule 18    expression -> INT_LITERAL
+Rule 19    expression -> IDENTIFIER
+
+Terminals, with rules where they appear
+
+DIVIDE               : 11
+ELSE                 : 7
+EQUALS               : 4
+FUNCTION             : 6
+GE                   : 14
+GT                   : 12
+IDENTIFIER           : 4 6 19
+IF                   : 7
+INT_LITERAL          : 18
+LE                   : 15
+LET                  : 4
+LPAREN               : 6 17
+LT                   : 13
+MINUS                : 9
+NEQ                  : 16
+PLUS                 : 8
+PRINT                : 5
+RPAREN               : 6 17
+STRING_LITERAL       : 5
+THEN                 : 6 7
+TIMES                : 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 4 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17
+program              : 0
+statement            : 2 3
+statement_list       : 6
+statements           : 1 2 7 7
+

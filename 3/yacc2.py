@@ -29,7 +29,12 @@ def p_statement_assign(p):
 
 def p_statement_print(p):
     'statement : PRINT STRING_LITERAL'
-    p[0] = ASTNode("Print", p[2])
+    string_node = ASTNode("Literal", value=p[2])
+    p[0] = ASTNode("Print", children=[string_node])
+
+def p_statement_function(p):
+    'statement : FUNCTION IDENTIFIER statements'
+    p[0] = ASTNode("FunctionDecl", p[2], p[3])
 
 def p_statement_if(p):
     'statement : IF expression THEN statements ELSE statements'

@@ -1,0 +1,7 @@
+digraph AST {
+	node0 [label=Program]
+	node1 [label=Print]
+	node0 -> node1
+	node2 [label="Literal\n\"This should not happen\""]
+	node1 -> node2
+}
