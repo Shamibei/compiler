@@ -1,4 +1,4 @@
-def generate_assembly(ir_code, output_file="output6.asm"):
+def generate_assembly(ir_code, output_file="output.asm"):
     import re
 
     # Register pool (naive allocation)
