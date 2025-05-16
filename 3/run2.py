@@ -4,11 +4,12 @@ from tree import ASTNode, print_ast, ast_to_graphviz
 from semantic import analyze_semantics
 from semantic import SemanticError
 from ir_gen import generate_ir, ir_code
+from codegen import generate_assembly
 
 
 def main():
     try:
-        with open("test2.sw", "r", encoding="utf-8") as file:
+        with open("test3.sw", "r", encoding="utf-8") as file:
             data = file.read()
     except FileNotFoundError:
         print("Error: 'testsw' file not found.")
@@ -55,6 +56,11 @@ def main():
     for line in ir_code:
         print(line)
     print("\nIR code generation completed successfully.")
+
+    print("\nGenerating Assembly code...")
+    generate_assembly(ir_code)
+    print("Assembly code:")
+    print("\nAssembly code generation completed successfully.")
 
 
 if __name__ == "__main__":
