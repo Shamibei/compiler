@@ -1,4 +1,4 @@
-def generate_assembly(ir_code, output_file="output.asm"):
+def generate_assembly(ir_code, output_file="output1.asm"):
     import re
 
     # Register pool (naive allocation)
@@ -148,23 +148,21 @@ def generate_assembly(ir_code, output_file="output.asm"):
     text_section.append("    int 0x80")
 
      # Final assembly code — ordered correctly
-    final_asm = []
+    asm = []
+    asm.append("section .data")
+    asm.extend(data_section)
 
-    # Section .data
-    final_asm.append("section .data")
- #   data_section.append('malloc_space dd 0\n   extern malloc\n   extern free')
-    final_asm.extend(data_section)
+    asm.append("section .bss")
+    asm.extend(bss_section)
 
-    # Section .bss
-    final_asm.append("section .bss")
-    final_asm.extend(bss_section)
-
-    # Section .text
-    final_asm.append("section .text")
-    final_asm.append("global _start")
-    final_asm.extend(text_section)
+    asm.append("section .text")
+    asm.append("global _start")
+    asm.extend(text_section)
 
     # Write to file
     with open(output_file, "w") as f:
-        for line in final_asm:
-            f.write(line + "\n")
+        for line in asm:
+         f.write(line + "\n")
+
+    
+    
